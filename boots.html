@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1a0000">
+    <title>看靴子 · 国旗护卫队</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(160deg, #1a0000 0%, #0a0a0a 100%);
+            color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .title {
+            color: #d4af37;
+            font-size: 2.6em;
+            letter-spacing: 10px;
+            margin-bottom: 12px;
+            text-shadow: 0 0 18px rgba(212, 175, 55, 0.5);
+        }
+        .subtitle {
+            color: #f5d97a;
+            font-size: 1.2em;
+            letter-spacing: 3px;
+            margin-bottom: 35px;
+        }
+        .boots-wrap {
+            background: #141414;
+            border: 3px solid #d4af37;
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 12px 40px rgba(139, 0, 0, 0.5);
+            max-width: 600px;
+            width: 100%;
+        }
+        .boots-wrap img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+        .caption {
+            margin-top: 18px;
+            color: #ccc;
+            font-size: 1.05em;
+            line-height: 1.9;
+        }
+        .caption strong {
+            color: #f5d97a;
+        }
+        .back {
+            margin-top: 40px;
+            display: inline-block;
+            padding: 12px 36px;
+            background: #8b0000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 40px;
+            font-size: 1.05em;
+            letter-spacing: 2px;
+            border: 2px solid #d4af37;
+            transition: all 0.3s;
+        }
+        .back:hover {
+            background: #d4af37;
+            color: #1a0000;
+            transform: scale(1.05);
+        }
+        /* 响应式 - 平板 */
+        @media (max-width: 768px) {
+            .title { font-size: 2.2em; letter-spacing: 6px; }
+            .subtitle { font-size: 1.05em; }
+            .boots-wrap { max-width: 90%; }
+            .caption { font-size: 1em; }
+        }
+        /* 响应式 - 手机 */
+        @media (max-width: 480px) {
+            body { padding: 25px 15px; }
+            .title {
+                font-size: 1.8em;
+                letter-spacing: 4px;
+                margin-bottom: 8px;
+            }
+            .subtitle {
+                font-size: 0.92em;
+                letter-spacing: 2px;
+                margin-bottom: 25px;
+            }
+            .boots-wrap {
+                padding: 12px;
+                border-width: 2px;
+            }
+            .caption {
+                margin-top: 14px;
+                font-size: 0.92em;
+                line-height: 1.85;
+            }
+            .back {
+                margin-top: 30px;
+                padding: 11px 30px;
+                font-size: 0.98em;
+                letter-spacing: 1px;
+            }
+        }
+        /* 响应式 - 小屏手机 */
+        @media (max-width: 360px) {
+            .title { font-size: 1.5em; letter-spacing: 3px; }
+            .subtitle { font-size: 0.82em; }
+            .caption { font-size: 0.85em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="title">看 靴 子</div>
+    <div class="subtitle">报名第一步 · 先看护卫队战靴</div>
+
+    <div class="boots-wrap">
+        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=A%20pair%20of%20polished%20black%20military%20ceremonial%20dress%20boots%2C%20glossy%20leather%2C%20formal%20uniform%20boots%2C%20shiny%20and%20clean%2C%20studio%20lighting%2C%20high%20detail%2C%20clean%20dark%20background&image_size=landscape_4_3" alt="国旗护卫队 ceremonial boots 靴子">
+        <div class="caption">
+            这，就是国旗护卫队的<strong>战靴</strong>。<br>
+            每一道反光，是无数次正步磨砺出的锋芒；每一寸皮面，承载着护卫国旗的庄严使命。<br>
+            穿上它，你将踏出最铿锵的步伐，走出最挺拔的青春。
+        </div>
+    </div>
+
+    <a href="index.html" class="back">← 返回招新主页</a>
+</body>
+</html>
