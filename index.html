@@ -4,64 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#8b0000">
-    <title>哈尔滨理工大学荣成学院 国旗护卫队 招新</title>
+    <meta name="theme-color" content="#0a0a0a">
+    <title>哈尔滨理工大学威海校区 国旗护卫队 第十六届纳新</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
             background: #0a0a0a;
-            color: #f5f5f5;
+            color: #e0e0e0;
             line-height: 1.8;
+            overflow-x: hidden;
         }
-        /* 顶部横幅 */
-        .banner {
-            background: linear-gradient(135deg, #8b0000 0%, #5c0000 50%, #1a0000 100%);
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.7); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(25px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ff1a1a 0%, #ff6600 30%, #ffcc00 60%, #ff9900 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradient-flow 3s ease infinite;
+        }
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 军绿色装饰线 */
+        .army-accent {
+            background: linear-gradient(90deg, transparent, #2d5a3d, #d4af37, #2d5a3d, transparent);
+            height: 2px;
+            width: 100%;
+        }
+
+        /* 英雄区域 */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 60px 20px 70px;
-            border-bottom: 4px solid #d4af37;
+            padding: 40px 20px;
+            overflow: hidden;
         }
-        .banner .logo {
-            width: 160px;
-            height: 160px;
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('bg.jpg') center/cover no-repeat;
+            z-index: -1;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(20,0,0,0.35) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.5) 100%);
+            z-index: -1;
+        }
+        .hero .logo {
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
-            margin: 0 auto 25px;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-            display: block;
-            object-fit: cover;
             border: 3px solid #d4af37;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+            margin-bottom: 25px;
+            animation: float 4s ease-in-out infinite;
         }
-        .banner h1 {
+        .hero h1 {
             font-size: 3em;
-            letter-spacing: 8px;
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            font-weight: 900;
+            letter-spacing: 5px;
+            margin-bottom: 8px;
+            color: #fff;
         }
-        .banner .sub {
-            font-size: 1.3em;
-            color: #d4af37;
-            letter-spacing: 4px;
+        .hero h1 .glow-text {
+            text-shadow: 0 0 25px rgba(255, 100, 50, 0.7);
         }
-        .banner .school {
-            margin-top: 20px;
-            font-size: 1.1em;
-            color: #e0c060;
+        .hero .subtitle {
+            font-size: 1.2em;
+            color: #fff;
+            margin-bottom: 35px;
+            letter-spacing: 2px;
+            opacity: 0.9;
         }
-        .banner .slogan {
-            margin-top: 28px;
-            padding-top: 22px;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        .hero .desc {
+            font-size: 1.05em;
+            color: #e8e8e8;
+            max-width: 650px;
+            line-height: 2;
+            margin-bottom: 45px;
+            padding: 0 10px;
+        }
+        .hero .cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 38px;
+            background: linear-gradient(135deg, #d4af37, #ffcc00);
+            color: #1a0000;
+            text-decoration: none;
             font-size: 1.15em;
-            color: #f5d97a;
-            letter-spacing: 6px;
-            font-weight: 500;
+            font-weight: bold;
+            letter-spacing: 3px;
+            border-radius: 50px;
+            box-shadow: 0 6px 22px rgba(212, 175, 55, 0.5);
+            transition: all 0.3s;
         }
+        .hero .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.7);
+            background: linear-gradient(135deg, #ffcc00, #ffd633);
+        }
+        .hero .cta-arrow {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        .hero .school {
+            position: absolute;
+            bottom: 25px;
+            font-size: 0.9em;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 3px;
+        }
+
         /* 通用版块 */
         .section {
             max-width: 900px;
@@ -69,75 +161,141 @@
             padding: 60px 25px;
         }
         .section h2 {
-            font-size: 2em;
+            font-size: 2.1em;
             color: #d4af37;
             border-left: 6px solid #8b0000;
             padding-left: 18px;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
             letter-spacing: 2px;
+            animation: slideUp 0.6s ease-out;
         }
         .section p {
-            font-size: 1.1em;
-            color: #ddd;
-            margin-bottom: 18px;
+            font-size: 1.05em;
+            color: #fff;
+            margin-bottom: 16px;
             text-align: justify;
         }
-        /* 宣传语 */
-        .promo {
-            background: #1a1a1a;
-            text-align: center;
-        }
-        .promo .quote {
-            font-size: 1.4em;
-            color: #f5d97a;
-            font-style: italic;
-            margin: 20px 0;
-            line-height: 2;
-        }
-        /* 组织架构 */
-        .structure {
-            display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        .dept {
-            flex: 1;
-            min-width: 280px;
-            background: linear-gradient(160deg, #1f1f1f, #111);
-            border: 1px solid #5c0000;
-            border-radius: 10px;
-            padding: 30px 25px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .dept:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.4);
-        }
-        .dept h3 {
-            color: #d4af37;
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            text-align: center;
-            letter-spacing: 3px;
-        }
-        .dept ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .dept ul li {
-            padding: 8px 0 8px 22px;
+
+        /* 致新同学的一封信 */
+        .letter-section {
+            background: #0f0f0f;
             position: relative;
-            color: #ccc;
-            border-bottom: 1px dashed #333;
         }
-        .dept ul li::before {
-            content: "★";
-            color: #8b0000;
+        .letter-section::before {
+            content: '';
             position: absolute;
+            top: 0;
             left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #2d5a3d, #d4af37, #2d5a3d, transparent);
         }
+        .letter-section .slogan {
+            font-size: 1.7em;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 6px;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+        .letter-section .letter-content {
+            font-size: 1.05em;
+            line-height: 2.2;
+            color: #fff;
+        }
+        .letter-section .letter-content strong {
+            color: #f5d97a;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* 关于我们 */
+        .about-section {
+            background: #0a0a0a;
+            position: relative;
+        }
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #8b0000, #d4af37, #2d5a3d, #d4af37, #8b0000);
+        }
+        .about-section .tasks {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        .about-section .tasks li {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.02em;
+        }
+        .about-section .tasks li::marker {
+            color: #2d5a3d;
+        }
+        .about-section .img-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+        }
+        .about-section .img-item {
+            aspect-ratio: 4/3;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+        }
+        .about-section .img-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #d4af37;
+            box-shadow: 0 15px 35px rgba(139, 0, 0, 0.4);
+        }
+        .about-section .img-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        .about-section .img-item:hover img {
+            transform: scale(1.1);
+        }
+        .about-section .img-item .label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px;
+            background: linear-gradient(transparent, rgba(45, 90, 61, 0.95));
+            color: #f5d97a;
+            font-size: 0.9em;
+            letter-spacing: 2px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .about-section .img-item:hover .label {
+            opacity: 1;
+        }
+
         /* 你能获得什么 */
+        .gain-section {
+            background: #0f0f0f;
+            position: relative;
+        }
+        .gain-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #2d5a3d, #d4af37, #2d5a3d, transparent);
+        }
         .gain-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -145,237 +303,510 @@
             margin-top: 20px;
         }
         .gain-item {
-            background: #181818;
+            background: rgba(45, 90, 61, 0.15);
             border-left: 4px solid #d4af37;
             padding: 22px 20px;
-            border-radius: 6px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            backdrop-filter: blur(8px);
+        }
+        .gain-item:hover {
+            transform: translateX(5px);
+            background: rgba(45, 90, 61, 0.25);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
         }
         .gain-item h4 {
             color: #f5d97a;
-            font-size: 1.2em;
+            font-size: 1.25em;
             margin-bottom: 10px;
+            letter-spacing: 2px;
         }
         .gain-item p {
-            font-size: 0.98em;
-            color: #bbb;
+            font-size: 0.95em;
+            color: #fff;
             margin: 0;
         }
-        /* 号召加入 */
-        .call-join {
-            background: linear-gradient(135deg, #5c0000, #1a0000);
-            text-align: center;
-            padding: 70px 25px;
-            border-top: 4px solid #d4af37;
+
+        /* 组织架构 */
+        .struct-section {
+            background: #0a0a0a;
+            position: relative;
         }
-        .call-join h2 {
-            color: #f5d97a;
-            font-size: 2.4em;
-            border: none;
-            padding: 0;
+        .struct-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #8b0000, #d4af37, #2d5a3d, #d4af37, #8b0000);
+        }
+        .struct-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .struct-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 30px 25px;
+            border: 2px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .struct-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #8b0000, #d4af37, #2d5a3d);
+        }
+        .struct-card:hover {
+            transform: translateY(-6px);
+            border-color: #d4af37;
+            box-shadow: 0 12px 35px rgba(139, 0, 0, 0.3);
+        }
+        .struct-card h3 {
+            color: #d4af37;
+            font-size: 1.5em;
             margin-bottom: 20px;
             letter-spacing: 4px;
+            text-align: center;
         }
-        .call-join p {
-            font-size: 1.2em;
-            color: #eee;
-            max-width: 700px;
-            margin: 0 auto 35px;
-        }
-        /* 报名按钮 */
-        .signup-link {
+        .struct-card .dept-label {
             display: inline-block;
-            padding: 16px 50px;
-            background: #d4af37;
-            color: #1a0000;
+            padding: 4px 12px;
+            background: rgba(45, 90, 61, 0.3);
+            color: #9bc4a7;
+            font-size: 0.85em;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            border: 1px solid rgba(45, 90, 61, 0.5);
+        }
+        .struct-card h4 {
+            color: #f5d97a;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            border-left: 3px solid #8b0000;
+        }
+        .struct-card ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        .struct-card ul li {
+            color: #fff;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+        .struct-card ul li::marker {
+            color: #2d5a3d;
+        }
+        .struct-card .note {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(45, 90, 61, 0.4);
+            font-size: 0.9em;
+            color: #9bc4a7;
+            text-align: center;
+        }
+
+        /* 最后一页 - 报名 */
+        .join-section {
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            padding: 100px 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .join-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 40%, transparent 70%);
+            border-radius: 50%;
+        }
+        .join-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, #fff, #d4af37, transparent);
+        }
+        .join-card {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 24px;
+            padding: 50px 40px;
+            box-shadow: 0 10px 40px rgba(139, 0, 0, 0.2);
+            animation: fadeIn 0.8s ease-out;
+        }
+        .join-card h2 {
+            font-size: 2.1em;
+            color: #d4af37;
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+            border: none;
+            padding: 0;
+        }
+        .join-card p {
+            font-size: 1.05em;
+            color: #ccc;
+            line-height: 2.2;
+            margin-bottom: 40px;
+        }
+        .join-card .signup-btn {
+            display: inline-block;
+            padding: 16px 55px;
+            background: linear-gradient(135deg, #8b0000, #ff4d4d, #ffcc00, #ff9900);
+            background-size: 200% 200%;
+            animation: gradient-shift 3s ease infinite;
+            color: #fff;
             text-decoration: none;
-            font-size: 1.3em;
-            font-weight: bold;
+            font-size: 1.25em;
+            font-weight: 900;
             letter-spacing: 3px;
             border-radius: 50px;
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 6px 25px rgba(255, 100, 50, 0.4);
             transition: all 0.3s;
-            border: 2px solid #f5d97a;
+            border: none;
+            cursor: pointer;
         }
-        .signup-link:hover {
-            background: #f5d97a;
-            transform: scale(1.05);
-            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.8);
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .signup-hint {
-            margin-top: 18px;
-            font-size: 0.95em;
-            color: #c9a437;
+        .join-card .signup-btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 10px 35px rgba(255, 100, 50, 0.6);
         }
+
+        /* 弹窗 */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(6px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease-out;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            animation: slideUp 0.4s ease-out;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+        .modal-content h3 {
+            color: #d4af37;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+        .modal-content .qr-img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #2d5a3d;
+        }
+        .modal-content p {
+            color: #fff;
+            font-size: 1.05em;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+        .modal-content .close-btn {
+            padding: 12px 35px;
+            background: rgba(45, 90, 61, 0.2);
+            color: #9bc4a7;
+            border: 1px solid #2d5a3d;
+            border-radius: 30px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 2px;
+        }
+        .modal-content .close-btn:hover {
+            background: #2d5a3d;
+            color: #fff;
+        }
+
+        /* 底部 */
         footer {
             text-align: center;
-            padding: 30px 20px;
-            background: #000;
-            color: #777;
+            padding: 40px 20px;
+            background: #2d5a3d;
+            color: #c8e6d0;
             font-size: 0.9em;
+            letter-spacing: 3px;
         }
-        /* 响应式 - 平板 */
+        footer .slogan {
+            color: #f5d97a;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        /* 响应式 */
         @media (max-width: 768px) {
-            .banner { padding: 50px 18px 55px; }
-            .banner .logo { width: 130px; height: 130px; margin-bottom: 20px; }
-            .banner h1 { font-size: 2.4em; letter-spacing: 6px; }
-            .banner .sub { font-size: 1.1em; letter-spacing: 3px; }
-            .banner .school { font-size: 1em; }
-            .banner .slogan { font-size: 1em; letter-spacing: 4px; margin-top: 22px; padding-top: 18px; }
+            .hero h1 { font-size: 2.3em; letter-spacing: 4px; }
+            .hero .subtitle { font-size: 1.1em; }
+            .hero .desc { font-size: 1em; }
+            .hero .logo { width: 105px; height: 105px; }
             .section { padding: 45px 20px; }
-            .section h2 { font-size: 1.7em; letter-spacing: 1px; }
-            .section p { font-size: 1.02em; }
-            .promo .quote { font-size: 1.25em; }
-            .dept { min-width: 100%; padding: 25px 20px; }
-            .dept h3 { font-size: 1.35em; }
-            .gain-item { padding: 18px 16px; }
-            .call-join { padding: 55px 22px; }
-            .call-join h2 { font-size: 2em; letter-spacing: 3px; }
-            .call-join p { font-size: 1.1em; }
-            .signup-link { padding: 14px 40px; font-size: 1.15em; letter-spacing: 2px; }
+            .section h2 { font-size: 1.7em; }
+            .about-section .img-grid { gap: 12px; }
+            .struct-grid { grid-template-columns: 1fr; }
+            .join-card { padding: 35px 25px; }
+            .join-card h2 { font-size: 1.7em; }
         }
-        /* 响应式 - 手机 */
         @media (max-width: 480px) {
-            .banner { padding: 35px 15px 45px; }
-            .banner .logo { width: 100px; height: 100px; margin-bottom: 16px; border-width: 2px; }
-            .banner h1 { font-size: 1.9em; letter-spacing: 4px; }
-            .banner .sub { font-size: 0.98em; letter-spacing: 2px; }
-            .banner .school { font-size: 0.9em; margin-top: 15px; }
-            .banner .slogan { font-size: 0.88em; letter-spacing: 2px; margin-top: 18px; padding-top: 14px; }
+            .hero h1 { font-size: 1.8em; letter-spacing: 3px; }
+            .hero .subtitle { font-size: 1em; }
+            .hero .desc { font-size: 0.95em; margin-bottom: 40px; }
+            .hero .logo { width: 85px; height: 85px; }
+            .hero .cta { padding: 13px 28px; font-size: 1.1em; }
+            .hero .school { font-size: 0.8em; bottom: 18px; }
             .section { padding: 35px 16px; }
-            .section h2 {
-                font-size: 1.45em;
-                letter-spacing: 1px;
-                padding-left: 14px;
-                border-left-width: 5px;
-                margin-bottom: 22px;
-            }
-            .section p { font-size: 0.98em; }
-            .promo .quote { font-size: 1.1em; line-height: 1.9; }
-            .structure { gap: 18px; }
-            .dept { padding: 22px 18px; }
-            .dept h3 { font-size: 1.25em; letter-spacing: 2px; }
-            .dept ul li { font-size: 0.92em; padding: 7px 0 7px 20px; }
-            .gain-grid { grid-template-columns: 1fr; gap: 14px; }
-            .gain-item h4 { font-size: 1.1em; }
-            .gain-item p { font-size: 0.92em; }
-            .call-join { padding: 45px 18px; }
-            .call-join h2 { font-size: 1.7em; letter-spacing: 2px; }
-            .call-join p { font-size: 1em; }
-            .signup-link {
-                display: block;
-                width: 100%;
-                padding: 14px 20px;
-                font-size: 1.1em;
-                letter-spacing: 2px;
-            }
-            .signup-hint { font-size: 0.85em; margin-top: 14px; }
-            footer { font-size: 0.8em; padding: 24px 15px; }
+            .section h2 { font-size: 1.45em; padding-left: 14px; }
+            .letter-section .slogan { font-size: 1.35em; letter-spacing: 4px; }
+            .letter-section .letter-content { font-size: 1em; }
+            .gain-grid { grid-template-columns: 1fr; }
+            .join-card { padding: 30px 20px; }
+            .join-card h2 { font-size: 1.55em; }
+            .join-card .signup-btn { padding: 14px 35px; font-size: 1.1em; }
+            .modal-content { padding: 25px 20px; }
         }
-        /* 响应式 - 小屏手机 */
         @media (max-width: 360px) {
-            .banner .logo { width: 85px; height: 85px; }
-            .banner h1 { font-size: 1.6em; letter-spacing: 3px; }
-            .banner .sub { font-size: 0.85em; }
-            .banner .slogan { font-size: 0.8em; letter-spacing: 1px; }
+            .hero h1 { font-size: 1.55em; }
             .section h2 { font-size: 1.3em; }
-            .call-join h2 { font-size: 1.5em; }
+            .join-card h2 { font-size: 1.4em; }
         }
     </style>
 </head>
 <body>
-    <!-- 横幅 -->
-    <div class="banner">
-        <img src="duihui.png" alt="哈尔滨理工大学国旗护卫队队徽" class="logo">
-        <div class="sub">青春护卫国旗 · 使命铸就荣光</div>
-        <h1>国旗护卫队</h1>
-        <div class="school">哈尔滨理工大学荣成学院</div>
-        <div class="slogan">认真学习 · 刻苦训练 · 文武兼备 · 百炼成钢</div>
+<!-- 英雄区域 -->
+<div class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <img src="duihui.png" alt="哈尔滨理工大学威海校区国旗护卫队队徽" class="logo">
+    <h1><span style="color:#fff;">加入</span><span class="gradient-text">国旗护卫队</span><span style="color:#fff;">，让你的校园生活多姿多彩</span></h1>
+    <div class="desc" style="margin-top:35px;">
+        这里是校园里一道靓丽的风景线，也是校园中锻炼身体和交友的绝佳组织。在这里，你能收获到一群志同道合的朋友，共同训练、欢乐、流汗和取得荣耀。无论你身体素质如何，只要有一颗坚持和永不服输的心，这里，便是你发光发热的舞台。
     </div>
+    <a href="#join" class="cta" style="margin-top:15px;">立即加入我们 <span class="cta-arrow">→</span></a>
+    <div class="school">哈尔滨理工大学威海校区</div>
+</div>
 
-    <!-- 宣传 -->
-    <div class="section promo">
-        <h2>致新同学的一封信</h2>
-        <p class="quote">"以青春之名，护国旗之尊；<br>以热血之心，铸护卫之魂。"</p>
-        <p>亲爱的萌新，当你踏入哈尔滨理工大学荣成学院的校园，迎着晨曦升起的那面五星红旗，正等待着新的守护者。国旗护卫队，是一支以护卫国旗、传承爱国主义精神为使命的半军事化学生组织。在这里，每一次正步、每一次敬礼，都是对祖国最深情的告白。</p>
+<!-- 致新同学的一封信 -->
+<div class="section letter-section">
+    <div class="slogan">以青春之名，护国旗荣光</div>
+    <div class="letter-content">
+        <p>同志，当你踏入哈尔滨理工大学威海校区的校园，迎着晨曦升起的那面五星红旗，正等待着新的守护者。国旗护卫队，是一支以护卫国旗、传承爱国主义精神为使命的半军事化学生组织。在这里，每一次正步、每一次敬礼，都是对祖国最深情的告白。晨光熹微，我们披星集结，挺拔身姿淬炼傲骨；暮色沉沉，我们反复操练，每一步都铿锵有力，每一次抬臂都一丝不苟。日复一日的站军姿、踢正步、练队列，褪去的是青涩慵懒，练就的是挺拔风骨、坚韧意志与绝对担当。没有随随便便的光鲜，只有千锤百炼的蜕变；没有轻轻松松的荣光，只有日复一日的坚守。</p>
+        <p style="text-align:center; margin:25px 0; font-size:1.2em; color:#f5d97a;"><strong>擎一面国旗，护一方信仰。</strong></p>
+        <p>在这里，你告别散漫庸常，遇见自律自强的自己；在这里，你挣脱平庸桎梏，收获并肩同行的挚友；在这里，你以青春之名，致敬家国山河，把赤诚热爱，化作守护红旗的坚定力量。</p>
+        <p style="text-align:center; margin:25px 0; font-size:1.2em; color:#f5d97a;"><strong>护卫国旗，重于生命；青春无悔，不负山河。</strong></p>
+        <p>不必畏惧枯燥的训练，每一次坚持都是成长的勋章；不必担心零基础的短板，所有挺拔与荣光，皆始于日复一日的打磨。只要你心怀赤诚、勇于坚持、敢于拼搏，愿意以热血赴使命，以笃行赴荣光，国旗护卫队便为你敞开大门！</p>
+        <p style="text-align:center; margin:25px 0; font-size:1.2em; color:#f5d97a;"><strong>少年当有凌云志，护旗不负少年时。</strong></p>
+        <p>这是一场关于热爱与坚守的奔赴，一次关于成长与荣光的蜕变。让挺拔的身姿，成为校园最耀眼的风景；让滚烫的青春，与五星红旗同频共振！</p>
         <p>如果你心中有信仰，肩上有担当，脚下有力量——那么，我们在国旗杆下，等你归队！</p>
     </div>
+</div>
 
-    <!-- 组织介绍 -->
-    <div class="section">
-        <h2>关于我们</h2>
-        <p>哈尔滨理工大学荣成学院国旗护卫队，是学院重点建设的学生仪仗组织，承担学院重大活动、运动会、开学典礼、毕业典礼等场合的升旗与仪仗任务。我们以"认真学习、刻苦训练、文武兼备、百炼成钢"为口号，实行半军事化管理，注重队员的政治素养、军事素养与团队协作能力。</p>
-        <p>自2011年成立以来，国旗护卫队始终坚守在护卫国旗的第一线，以严整的军容、过硬的素质、优良的作风，成为学院一道亮丽的风景线。我们不仅是升旗的队伍，更是一面旗帜——飘扬在校园里，引领着一代又一代哈理工荣成学子，将爱国之情化为报国之行。</p>
-    </div>
+<!-- 关于我们 -->
+<div class="section about-section">
+    <h2>关于我们</h2>
+    <p>国旗护卫队是隶属于院团委的学生组织，以护卫国旗为使命，以弘扬爱国主义精神为己任，发扬吃苦耐劳的精神，展现当代大学生团结进取、积极向上的精神风貌，为我校精神文明建设做出贡献，是我校的爱国主义教育组织。</p>
+    <p>国旗护卫队的主要任务是:</p>
+    <ul class="tasks">
+        <li>组织并完成校内重大活动的升降旗任务。</li>
+        <li>维护国旗的尊严与荣誉、定时升降国旗、宣传《国旗法》、增强师生爱国意识。</li>
+    </ul>
+    <p>下设三个部门，分别为仪仗部、秘书部和宣传部。</p>
+    <p>如果你有满腔热血，热爱国旗；如果你渴望穿上军装，百炼成钢；如果你想让青春无悔，不留遗憾，国旗护卫队全体成员希望能与你一起肩扛国旗，谱写国旗班新的乐章，让你的青春刻上无悔的印章!</p>
 
-    <!-- 你能获得什么 -->
-    <div class="section" style="background:#141414;">
-        <h2>在这里，你能获得什么</h2>
-        <div class="gain-grid">
-            <div class="gain-item">
-                <h4>挺拔的身姿</h4>
-                <p>系统化的队列训练，塑造标准军姿与正步，气质脱胎换骨。</p>
-            </div>
-            <div class="gain-item">
-                <h4>钢铁的意志</h4>
-                <p>在严苛训练中磨砺心性，学会坚持与担当，超越自我极限。</p>
-            </div>
-            <div class="gain-item">
-                <h4>一生的战友</h4>
-                <p>与志同道合的兄弟姐妹并肩作战，收获最纯粹的革命友谊。</p>
-            </div>
-            <div class="gain-item">
-                <h4>闪光的履历</h4>
-                <p>参与学院重大活动，获得荣誉证书与实践经历，为成长加分。</p>
-            </div>
-            <div class="gain-item">
-                <h4>深厚的家国情怀</h4>
-                <p>每日与国旗为伴，将爱国信仰融入血脉，铸就赤子之心。</p>
-            </div>
-            <div class="gain-item">
-                <h4>卓越的领导力</h4>
-                <p>在组织与协作中锻炼统筹协调能力，成长为团队的中坚力量。</p>
-            </div>
+    <div class="img-grid">
+        <!-- 【图片占位块1 - 图4：升旗训练照片】 -->
+        <div class="img-item">
+            <img src="photo1.jpg" alt="升旗训练">
+            <div class="label">升旗训练</div>
+        </div>
+        <!-- 【图片占位块2 - 图5：升旗仪式照片】 -->
+        <div class="img-item">
+            <img src="photo2.jpg" alt="升旗仪式">
+            <div class="label">升旗仪式</div>
+        </div>
+        <!-- 【图片占位块3 - 图6：队员合影】 -->
+        <div class="img-item">
+            <img src="photo3.jpg" alt="队员合影">
+            <div class="label">队员合影</div>
+        </div>
+        <!-- 【图片占位块4 - 图7：活动剪影】 -->
+        <div class="img-item">
+            <img src="photo4.jpg" alt="活动剪影">
+            <div class="label">活动剪影</div>
         </div>
     </div>
+</div>
 
-    <!-- 组织架构 -->
-    <div class="section">
-        <h2>组织架构</h2>
-        <p>国旗护卫队下设两大核心部门，各司其职，协同作战：</p>
-        <div class="structure">
-            <div class="dept">
-                <h3>仪仗部</h3>
-                <ul>
-                    <li>承担日常升旗、降旗任务</li>
-                    <li>负责学院重大活动仪仗表演</li>
-                    <li>开展队列、正步、军姿等军事训练</li>
-                    <li>维护仪仗器械与礼服装备</li>
-                    <li>选拔与培养仪仗骨干队员</li>
-                </ul>
-            </div>
-            <div class="dept">
-                <h3>后勤部</h3>
-                <ul>
-                    <li>负责队内物资与装备管理</li>
-                    <li>组织招新宣传、活动策划与执行</li>
-                    <li>统筹队内考勤、档案与绩效考核</li>
-                    <li>协调场地、服装与后勤保障</li>
-                    <li>运营队内新媒体与对外联络</li>
-                </ul>
-            </div>
+<!-- 你能获得什么 -->
+<div class="section gain-section">
+    <h2>在这里，你能获得什么</h2>
+    <div class="gain-grid">
+        <div class="gain-item">
+            <h4>挺拔的身姿</h4>
+            <p>系统化的队列训练，塑造标准军姿与正步，气质脱胎换骨。</p>
+        </div>
+        <div class="gain-item">
+            <h4>钢铁的意志</h4>
+            <p>在严苛训练中磨砺心性，学会坚持与担当，超越自我极限。</p>
+        </div>
+        <div class="gain-item">
+            <h4>一生的战友</h4>
+            <p>与志同道合的兄弟姐妹并肩作战，收获最纯粹的革命友谊。</p>
+        </div>
+        <div class="gain-item">
+            <h4>闪光的履历</h4>
+            <p>参与学院重大活动，获得荣誉证书与实践经历，为成长加分。</p>
+        </div>
+        <div class="gain-item">
+            <h4>深厚的家国情怀</h4>
+            <p>每日与国旗为伴，将爱国信仰融入血脉，铸就赤子之心。</p>
+        </div>
+        <div class="gain-item">
+            <h4>卓越的领导力</h4>
+            <p>在组织与协作中锻炼统筹协调能力，成长为团队的中坚力量。</p>
         </div>
     </div>
+</div>
 
-    <!-- 号召加入 -->
-    <div class="call-join">
+<!-- 组织架构 -->
+<div class="section struct-section">
+    <h2>组织架构</h2>
+    <div class="struct-grid">
+        <!-- 仪仗部 -->
+        <div class="struct-card">
+            <h3>仪仗部</h3>
+            <span class="dept-label">核心部门</span>
+            <h4>工作职责</h4>
+            <ul>
+                <li>主要负责学校的重大升旗任务以及日常升旗护旗任务</li>
+            </ul>
+            <h4>纳新要求</h4>
+            <ul>
+                <li>男生身高170CM以上，女生身高160CM以上</li>
+                <li>要求身体素质良好，敢于吃苦、甘于坚持，严格遵守各项纪律规章，无重大疾病史，能够适应高强度训练</li>
+                <li>具备较强自律意识，品行端正、勤学向善，拥有良好时间规划能力，妥善统筹学习与训练任务，保障参训质量，稳步精进学业</li>
+                <li>言行举止规范得体，契合国旗护卫队队员身份标准，能够在同学中发挥先锋模范作用</li>
+            </ul>
+            <p class="note">加入国旗护卫队系统训练，锤炼体魄、磨砺意志，有参军意向的报国机会更多，在国护训练可以提高你的入伍概率。</p>
+        </div>
+
+        <!-- 秘书部 -->
+        <div class="struct-card">
+            <h3>秘书部</h3>
+            <span class="dept-label">职能部门</span>
+            <h4>工作职责</h4>
+            <ul>
+                <li>主要负责国旗护卫队各项大型活动策划案、各种稿件的起草</li>
+            </ul>
+            <h4>纳新要求</h4>
+            <ul>
+                <li>思路清晰，做事细心，有一定的文字基础</li>
+                <li>会使用简单的办公软件</li>
+            </ul>
+        </div>
+
+        <!-- 宣传部 -->
+        <div class="struct-card">
+            <h3>宣传部</h3>
+            <span class="dept-label">职能部门</span>
+            <h4>工作职责</h4>
+            <ul>
+                <li>主要负责微信公众号的维护和更新</li>
+                <li>在各项活动中记录下队员精彩瞬间，将国旗护卫队的钢铁意志及团结精神展现给大家</li>
+            </ul>
+            <h4>纳新要求</h4>
+            <ul>
+                <li>掌握宣传手法，熟悉PS和视频剪辑</li>
+                <li>摄影摄像，具有一定的绘画和摄影能力</li>
+            </ul>
+        </div>
+    </div>
+    <p style="text-align:center; margin-top:30px; color:#9bc4a7; font-size:1.05em;">(本组织共设有三个部门，且每个部门均有机会参与训练，护卫国旗!)</p>
+</div>
+
+<!-- 最后一页 - 报名 -->
+<div class="join-section" id="join">
+    <div class="join-card">
         <h2>加入国旗护卫队大家庭</h2>
         <p>这不仅是一支队伍，更是一个温暖的家。这里有你同甘共苦的兄弟姐妹，有你共同仰望的信仰，有你一生难忘的青春记忆。国旗之下，我们等你同行——一起，把最好的年华，献给最庄严的事业。</p>
-        <a href="boots.html" class="signup-link">立即报名加入</a>
-        <div class="signup-hint">点击报名，开启你的护卫之旅</div>
+        <button class="signup-btn" onclick="openModal()">立即报名加入</button>
     </div>
+</div>
 
-    <footer>
-        © 哈尔滨理工大学荣成学院 国旗护卫队 · 以青春之名，护国旗之尊
-    </footer>
+<!-- 弹窗 -->
+<div class="modal-overlay" id="modal">
+    <div class="modal-content">
+        <h3>扫码进群了解更多</h3>
+        <!-- 【图三：QQ群二维码】 -->
+        <img src="qrcode.png" alt="QQ群二维码" class="qr-img">
+        <p>QQ扫一扫，即刻进入第十六届国护纳新群</p>
+        <button class="close-btn" onclick="closeModal()">关闭</button>
+    </div>
+</div>
+
+<footer>
+    <div class="slogan">认真学习 · 刻苦训练 · 文武兼备 · 百炼成钢</div>
+    © 哈尔滨理工大学威海校区 国旗护卫队 · 第十六届纳新
+</footer>
+
+<script>
+    function openModal() {
+        document.getElementById('modal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+        document.getElementById('modal').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    document.getElementById('modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+</script>
 </body>
 </html>
